@@ -63,7 +63,7 @@ function fetchData() {
     });
 }
 // Function to render quizzes
-function renderQuizzes(data) {
+function renderQuizzes(data, isDarkMode) {
     // Get the container where you want to display the options
     var optionsContainer = document.getElementById("navigation");
     // Check if the container exists
@@ -74,7 +74,14 @@ function renderQuizzes(data) {
         data.quizzes.forEach(function (option) {
             var listItem = document.createElement("li");
             listItem.className = "list-item";
-            listItem.style.backgroundColor = "white" || "dark-navy";
+            // Apply background color based on isDarkMode
+            listItem.style.backgroundColor = isDarkMode ? "#3b4c66" : "white";
+            listItem.style.color = isDarkMode ? "#fff" : "#313e51";
+            var darkModeSun = document.getElementById("darkModeSun");
+            var darkModeMoon = document.getElementById("darkModeMoon");
+            // Update dark mode icons
+            darkModeSun.src = isDarkMode ? "/images/icon-sun-light.svg" : "/images/icon-sun-dark.svg";
+            darkModeMoon.src = isDarkMode ? "/images/icon-moon-light.svg" : "/images/icon-moon-dark.svg";
             // Create the elements for option letter and content
             var title = document.createElement("h1");
             title.className = "content";
@@ -97,64 +104,36 @@ function renderQuizzes(data) {
 }
 // Document ready event listener
 document.addEventListener("DOMContentLoaded", function () { return __awaiter(_this, void 0, void 0, function () {
-    var data, e_1;
-    return __generator(this, function (_a) {
-        switch (_a.label) {
+    var data_1, isDarkMode_1, e_1;
+    var _a;
+    return __generator(this, function (_b) {
+        switch (_b.label) {
             case 0:
-                _a.trys.push([0, 2, , 3]);
+                _b.trys.push([0, 2, , 3]);
                 return [4 /*yield*/, fetchData()];
             case 1:
-                data = _a.sent();
-                console.log(data);
-                // Render quizzes
-                renderQuizzes(data);
+                data_1 = _b.sent();
+                isDarkMode_1 = false;
+                // Render quizzes with isDarkMode initially set to false
+                renderQuizzes(data_1, isDarkMode_1);
+                // Dark mode toggle
+                (_a = document.getElementById("darkModeToggle")) === null || _a === void 0 ? void 0 : _a.addEventListener("click", function () {
+                    // Toggle the dark mode status
+                    isDarkMode_1 = !isDarkMode_1;
+                    // Set background color and image based on dark mode status
+                    document.body.style.backgroundColor = isDarkMode_1 ? "#313E51" : "#F4F6FA";
+                    document.body.style.backgroundImage = isDarkMode_1 ? 'url("/images/pattern-background-desktop-dark.svg")' : 'url("/images/pattern-background-desktop-light.svg")';
+                    // Optionally, adjust text color based on dark mode status
+                    document.body.style.color = isDarkMode_1 ? "#ffffff" : "#313e51";
+                    // Render quizzes with updated isDarkMode status
+                    renderQuizzes(data_1, isDarkMode_1);
+                });
                 return [3 /*break*/, 3];
             case 2:
-                e_1 = _a.sent();
+                e_1 = _b.sent();
                 console.log(e_1);
                 return [3 /*break*/, 3];
             case 3: return [2 /*return*/];
         }
     });
 }); });
-// Dark mode toggle
-document.addEventListener("DOMContentLoaded", function () {
-    // Get a reference to the body element
-    // Get a reference to the dark mode toggle button element
-    var darkModeToggle = document.getElementById("darkModeToggle");
-    var body = document.body;
-    var isDarkMode = body.classList.contains("dark-mode");
-    // const img=document.getElementById("modeToggleImage") as HTMLImageElement;
-    // const img=document.getElementById("modeToggleImage") as HTMLImageElement;
-    darkModeToggle.addEventListener("click", function () {
-        body.classList.toggle("dark-mode");
-        body.style.backgroundColor = isDarkMode ? "#313E51" : "#F4F6FA";
-        body.style.color = isDarkMode ? "#ffffff" : "#313E51";
-        body.style.backgroundImage = isDarkMode ? 'url("/images/pattern-background-desktop-dark.svg")' : 'url("/images/pattern-background-desktop-light.svg")';
-    });
-    document.addEventListener("DOMContentLoaded", function () {
-        var body = document.body;
-        var darkModeToggle = document.getElementById("darkModeMoon");
-        var darkModeMoon = document.getElementById("darkModeMoon");
-        var darkModeSun = document.getElementById("darkModeSun");
-        var lightModeMoon = document.getElementById("darkModeMoon");
-        var lightModeSun = document.getElementById("lightModeSun");
-        // Initial setup based on dark mode status
-        updateMoonSunIcons();
-        darkModeToggle.addEventListener("click", function () {
-            body.classList.toggle("dark-mode");
-            // Update moon and sun icons based on dark mode status
-            updateMoonSunIcons();
-        });
-        function updateMoonSunIcons() {
-            var body = document.body;
-            var isDarkMode = body.classList.contains("dark-mode");
-            // const img=document.getElementById("modeToggleImage") as HTMLImageElement;
-            // Show/hide moon and sun based on dark mode status
-            darkModeMoon.style.display = isDarkMode ? "block" : "none";
-            darkModeSun.style.display = isDarkMode ? "none" : "block";
-            lightModeMoon.style.display = isDarkMode ? "none" : "block";
-            lightModeSun.style.display = isDarkMode ? "block" : "none";
-        }
-    });
-});

@@ -30,15 +30,35 @@ async function fetchData(): Promise<ApiResponse1> {
 }
 
 document.addEventListener("DOMContentLoaded", async () => {
+  // Dark mode toggle functionality
+  let isDarkMode = false; // Initialize dark mode state
+  const darkModeToggle = document.getElementById("darkModeToggle");
+
+  if (darkModeToggle) {
+    darkModeToggle.addEventListener("click", () => {
+      isDarkMode = !isDarkMode; // Toggle dark mode state
+      updateDarkMode(isDarkMode); // Update dark mode
+    });
+  }
+
+  function updateDarkMode(isDarkMode) {
+    document.body.style.color = isDarkMode ? "#ffffff" : "#313e51";
+    document.body.style.backgroundColor = isDarkMode ? "#313E51" : "#F4F6FA";
+    document.body.style.backgroundImage = isDarkMode ? 'url("/images/pattern-background-desktop-dark.svg")' : 'url("/images/pattern-background-desktop-light.svg")';
+
+
+
+  }
+
+  updateDarkMode(isDarkMode); // Set initial dark mode state
+
   try {
     const currentUrl = window.location.href;
     const urlParams = new URLSearchParams(new URL(currentUrl).search);
     const questionListContainer = document.getElementById("question-list")!;
 
     const typeParam = urlParams.get("type");
-    var alphabetSpan;
     const headTitle = document.getElementById("title");
-    const header = document.getElementById("header");
     headTitle!.textContent = typeParam;
     let totalScore = 0;
     let currentQuestionIndex = 0;
@@ -77,15 +97,25 @@ document.addEventListener("DOMContentLoaded", async () => {
           questionNumber.classList.add("question");
           questionNumber.textContent = `Question ${
             currentQuestionIndex + 1
-          } of ${filteredData[0].questions.length}`;
+            } of ${filteredData[0].questions.length}`;
+
+
 
           const questionText = document.createElement("h1");
           questionText.innerHTML = currentQuestion.question;
 
+
           leftContainer.appendChild(questionNumber);
           leftContainer.appendChild(questionText);
 
-          listItem.appendChild(leftContainer);
+
+
+
+          // listItem.appendChild(leftContainer);
+
+
+
+
 
           const optionsContainer = document.createElement("div");
           optionsContainer.classList.add("options-container");
@@ -95,12 +125,15 @@ document.addEventListener("DOMContentLoaded", async () => {
           optionsList.classList.add("options-list");
 
           currentQuestion.options.forEach((option, index) => {
-            const listItem = document.createElement("li");
+            const listItem = document.createElement("li") as HTMLElement;
+
+            // listItem.style.backgroundColor = isDarkMode ? "red" : "blue";
 
             // Create a span for the alphabet
             const alphabetSpan = document.createElement("span");
             alphabetSpan.textContent = String.fromCharCode(65 + index);
             alphabetSpan.className = "letter";
+
 
             // Set the option text content
             const optionText = document.createElement("span");
@@ -159,6 +192,11 @@ document.addEventListener("DOMContentLoaded", async () => {
               option.classList.remove("marked", "correct", "wrong");
             });
 
+
+
+            // Apply background color based on isDarkMode
+
+
             nextButton.style.display = "none";
 
             // Enable click event for options
@@ -181,7 +219,7 @@ document.addEventListener("DOMContentLoaded", async () => {
           optionsContainer.appendChild(nextButton);
 
           questionListContainer.appendChild(optionsContainer);
-          questionListContainer.appendChild(listItem);
+          questionListContainer.appendChild(leftContainer);
 
           // Event handler for option clicks
           function optionClickHandler() {
@@ -230,11 +268,7 @@ function markOption(optionsList: HTMLUListElement, optionElement: HTMLElement) {
 
   // Add the "marked" class to the current option
   optionElement.classList.add("marked");
-
 }
-
-
-
 
 function markAnswer(
   optionsList: HTMLUListElement,
@@ -243,7 +277,8 @@ function markAnswer(
   let score = 0;
 
   // Function to mark the correct answer after submitting
-  optionsList.querySelectorAll("li").forEach((option, index) => {
+  optionsList.querySelectorAll("li").forEach((option) => {
+
     const alphabetSpan = option.querySelector(".letter") as HTMLElement;
     const listItem = option as HTMLLIElement;
     const crossIcon = document.createElement("span");
@@ -275,8 +310,11 @@ function markAnswer(
       option.classList.add("wrong");
       alphabetSpan.style.backgroundColor = "red";
       alphabetSpan.style.color = "white";
+
     }
-    
+
+
+
   });
 
   return score;

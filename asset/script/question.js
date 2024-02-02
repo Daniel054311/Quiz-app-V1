@@ -62,6 +62,11 @@ function fetchData() {
     });
 }
 document.addEventListener("DOMContentLoaded", function () { return __awaiter(_this, void 0, void 0, function () {
+    function updateDarkMode(isDarkMode) {
+        document.body.style.color = isDarkMode ? "#ffffff" : "#313e51";
+        document.body.style.backgroundColor = isDarkMode ? "#313E51" : "#F4F6FA";
+        document.body.style.backgroundImage = isDarkMode ? 'url("/images/pattern-background-desktop-dark.svg")' : 'url("/images/pattern-background-desktop-light.svg")';
+    }
     function displayCurrentQuestion() {
         questionListContainer_1.innerHTML = "";
         var currentQuestion = filteredData_1[0].questions[currentQuestionIndex_1];
@@ -76,7 +81,7 @@ document.addEventListener("DOMContentLoaded", function () { return __awaiter(_th
         questionText.innerHTML = currentQuestion.question;
         leftContainer.appendChild(questionNumber);
         leftContainer.appendChild(questionText);
-        listItem.appendChild(leftContainer);
+        // listItem.appendChild(leftContainer);
         var optionsContainer = document.createElement("div");
         optionsContainer.classList.add("options-container");
         // Add the missing declaration for optionsList
@@ -84,6 +89,7 @@ document.addEventListener("DOMContentLoaded", function () { return __awaiter(_th
         optionsList.classList.add("options-list");
         currentQuestion.options.forEach(function (option, index) {
             var listItem = document.createElement("li");
+            // listItem.style.backgroundColor = isDarkMode ? "red" : "blue";
             // Create a span for the alphabet
             var alphabetSpan = document.createElement("span");
             alphabetSpan.textContent = String.fromCharCode(65 + index);
@@ -131,6 +137,7 @@ document.addEventListener("DOMContentLoaded", function () { return __awaiter(_th
                 option.style.border = "";
                 option.classList.remove("marked", "correct", "wrong");
             });
+            // Apply background color based on isDarkMode
             nextButton.style.display = "none";
             // Enable click event for options
             optionsList.querySelectorAll("li").forEach(function (option) {
@@ -150,7 +157,7 @@ document.addEventListener("DOMContentLoaded", function () { return __awaiter(_th
         optionsContainer.appendChild(submitButton);
         optionsContainer.appendChild(nextButton);
         questionListContainer_1.appendChild(optionsContainer);
-        questionListContainer_1.appendChild(listItem);
+        questionListContainer_1.appendChild(leftContainer);
         // Event handler for option clicks
         function optionClickHandler() {
             var isAlreadyMarked = this.classList.contains("marked");
@@ -164,23 +171,33 @@ document.addEventListener("DOMContentLoaded", function () { return __awaiter(_th
             option.addEventListener("click", optionClickHandler);
         });
     }
-    var currentUrl, urlParams, questionListContainer_1, typeParam_1, alphabetSpan, headTitle, header, totalScore_1, currentQuestionIndex_1, data, filteredData_1, imageUrl, headImg, e_1;
+    var isDarkMode, darkModeToggle, currentUrl, urlParams, questionListContainer_1, typeParam_1, headTitle, totalScore_1, currentQuestionIndex_1, data, filteredData_1, imageUrl, headImg, e_1;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
-                _a.trys.push([0, 4, , 5]);
+                isDarkMode = false;
+                darkModeToggle = document.getElementById("darkModeToggle");
+                if (darkModeToggle) {
+                    darkModeToggle.addEventListener("click", function () {
+                        isDarkMode = !isDarkMode; // Toggle dark mode state
+                        updateDarkMode(isDarkMode); // Update dark mode
+                    });
+                }
+                updateDarkMode(isDarkMode); // Set initial dark mode state
+                _a.label = 1;
+            case 1:
+                _a.trys.push([1, 5, , 6]);
                 currentUrl = window.location.href;
                 urlParams = new URLSearchParams(new URL(currentUrl).search);
                 questionListContainer_1 = document.getElementById("question-list");
                 typeParam_1 = urlParams.get("type");
                 headTitle = document.getElementById("title");
-                header = document.getElementById("header");
                 headTitle.textContent = typeParam_1;
                 totalScore_1 = 0;
                 currentQuestionIndex_1 = 0;
-                if (!questionListContainer_1) return [3 /*break*/, 2];
+                if (!questionListContainer_1) return [3 /*break*/, 3];
                 return [4 /*yield*/, fetchData()];
-            case 1:
+            case 2:
                 data = _a.sent();
                 filteredData_1 = data.quizzes.filter(function (item) { return item.title === typeParam_1; });
                 if (filteredData_1.length > 0) {
@@ -198,16 +215,16 @@ document.addEventListener("DOMContentLoaded", function () { return __awaiter(_th
                     console.error("No quiz found with the specified type.");
                     window.location.href = '/';
                 }
-                return [3 /*break*/, 3];
-            case 2:
+                return [3 /*break*/, 4];
+            case 3:
                 console.error('Container element with id "question-list" not found.');
-                _a.label = 3;
-            case 3: return [3 /*break*/, 5];
-            case 4:
+                _a.label = 4;
+            case 4: return [3 /*break*/, 6];
+            case 5:
                 e_1 = _a.sent();
                 console.log(e_1);
-                return [3 /*break*/, 5];
-            case 5: return [2 /*return*/];
+                return [3 /*break*/, 6];
+            case 6: return [2 /*return*/];
         }
     });
 }); });
@@ -229,7 +246,7 @@ function markOption(optionsList, optionElement) {
 function markAnswer(optionsList, correctAnswer) {
     var score = 0;
     // Function to mark the correct answer after submitting
-    optionsList.querySelectorAll("li").forEach(function (option, index) {
+    optionsList.querySelectorAll("li").forEach(function (option) {
         var _a;
         var alphabetSpan = option.querySelector(".letter");
         var listItem = option;
@@ -239,6 +256,8 @@ function markAnswer(optionsList, correctAnswer) {
         var tickIcon = document.createElement("span");
         tickIcon.innerHTML = '<i class="fas fa-check"></i>'; // Assuming Font Awesome is used
         tickIcon.className = "tickIcon";
+        var isDarkMode = document.body.style.backgroundColor === "#313E51";
+        option.style.backgroundColor = isDarkMode ? "#555" : "#ccc";
         if ((_a = option.textContent) === null || _a === void 0 ? void 0 : _a.endsWith(correctAnswer)) {
             if (option.classList.contains("marked")) {
                 // Mark the selected option as correct

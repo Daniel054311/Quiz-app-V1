@@ -25,6 +25,10 @@ body {
   background-color: transparent; /* Color of the track */
 }
 
+.headerContainer{
+  display: flex;
+  justify-content: space-between;
+}
 
 .header {
   display: flex;
@@ -34,17 +38,23 @@ body {
   margin: 20px 20;
 }
 
+
 #question-list {
+  /* Existing styles */
   display: flex;
   justify-content: space-between;
   margin: 20px 20;
   flex-direction: row-reverse;
   padding: 0px 2%;
-  overflow-y: auto;  /* Enable vertical scrolling */
-  max-height: 500px; /* Set a fixed maximum height */
+  /* Enable vertical scrolling */
+  /* Set a fixed maximum height */
+
+  /* Updated styles to avoid overriding dynamic text color changes */
+  color: inherit;/* Inherit text color from parent (body) */
 }
 
-.list-item {
+
+/* .list-item {
   margin-bottom: 20px;
   padding: 10px;
   display: flex;
@@ -52,15 +62,14 @@ body {
   font-size: 16px;
   color: #313E51;
   width: 50%;
-  box-sizing: border-box; /* Ensure padding is included in width calculation */
-}
+  box-sizing: border-box; } */
 
-.question {
+/* .question {
   margin-bottom: 10px;
   font-size: 20px;
   font-style: italic;
   color: #626C7F;
-}
+} */
 
 
 button {
@@ -70,7 +79,6 @@ button {
 
 .options-list {
   display: flex;
-  justify-content: space-between;
   text-align: right;
   display: flex;
   flex-direction: column;
@@ -98,6 +106,10 @@ button {
   font-style: normal;
   cursor: pointer;
 
+}
+
+.dark-mode li {
+  background-color: black;
 }
 
 .submit,
@@ -149,7 +161,7 @@ button {
 
 .tickIcon {
   text-align: center;
-  color: rgba#26D782;
+  color: #26D782;
   border-radius: 50%;
   height: 20px;
   width: 20px;
@@ -159,4 +171,3 @@ button {
 }
 
 
- 

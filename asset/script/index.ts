@@ -1,4 +1,3 @@
-
 interface ApiResponse1 {
   quizzes: quizzes[];
 }
@@ -9,7 +8,6 @@ interface quizzes {
   icon: string;
   backgroundColor: string;
 }
-
 
 // Function to make a Fetch API call for Interface 1
 async function fetchData(): Promise<ApiResponse1> {
@@ -28,9 +26,8 @@ async function fetchData(): Promise<ApiResponse1> {
   }
 }
 
-
 // Function to render quizzes
-function renderQuizzes(data: ApiResponse1) {
+function renderQuizzes(data: ApiResponse1, isDarkMode: boolean) {
   // Get the container where you want to display the options
   const optionsContainer = document.getElementById("navigation");
 
@@ -43,7 +40,18 @@ function renderQuizzes(data: ApiResponse1) {
     data.quizzes.forEach((option) => {
       const listItem = document.createElement("li");
       listItem.className = "list-item";
-      listItem.style.backgroundColor =  "white" || "dark-navy";
+
+      // Apply background color based on isDarkMode
+      listItem.style.backgroundColor = isDarkMode ? "#3b4c66" : "white";
+      listItem.style.color = isDarkMode ? "#fff" : "#313e51";
+
+      const darkModeSun = document.getElementById("darkModeSun") as HTMLImageElement;
+    const darkModeMoon = document.getElementById("darkModeMoon") as HTMLImageElement;
+
+
+      // Update dark mode icons
+      darkModeSun.src = isDarkMode ? "/images/icon-sun-light.svg" : "/images/icon-sun-dark.svg";
+      darkModeMoon.src = isDarkMode ? "/images/icon-moon-light.svg" : "/images/icon-moon-dark.svg";
 
       // Create the elements for option letter and content
       const title = document.createElement("h1");
@@ -76,77 +84,28 @@ document.addEventListener("DOMContentLoaded", async () => {
     // Fetch data from the API
     const data: ApiResponse1 = await fetchData();
 
-    console.log(data);
+    // Define a variable to track the dark mode status
+    let isDarkMode = false;
 
-    // Render quizzes
-    renderQuizzes(data);
+    // Render quizzes with isDarkMode initially set to false
+    renderQuizzes(data, isDarkMode);
+
+    // Dark mode toggle
+    document.getElementById("darkModeToggle")?.addEventListener("click", () => {
+      // Toggle the dark mode status
+      isDarkMode = !isDarkMode;
+
+      // Set background color and image based on dark mode status
+      document.body.style.backgroundColor = isDarkMode ? "#313E51" : "#F4F6FA";
+      document.body.style.backgroundImage = isDarkMode ? 'url("/images/pattern-background-desktop-dark.svg")' : 'url("/images/pattern-background-desktop-light.svg")';
+
+      // Optionally, adjust text color based on dark mode status
+      document.body.style.color = isDarkMode ? "#ffffff" : "#313e51";
+
+      // Render quizzes with updated isDarkMode status
+      renderQuizzes(data, isDarkMode);
+    });
   } catch (e) {
     console.log(e);
   }
-  
 });
-
-// Dark mode toggle
-document.addEventListener("DOMContentLoaded", () => {
-  // Get a reference to the body element
-
-  // Get a reference to the dark mode toggle button element
-  const darkModeToggle = document.getElementById("darkModeToggle") as HTMLElement;
-  const body = document.body;
-  const isDarkMode = body.classList.contains("dark-mode");
-    // const img=document.getElementById("modeToggleImage") as HTMLImageElement;
-  
-  // const img=document.getElementById("modeToggleImage") as HTMLImageElement;
-
-  darkModeToggle.addEventListener("click", () =>{
-    body.classList.toggle("dark-mode");
-      body.style.backgroundColor = isDarkMode ? "#313E51" :"#F4F6FA";
-      body.style.color = isDarkMode ? "#ffffff": "#313E51";
-      body.style.backgroundImage = isDarkMode ? 'url("/images/pattern-background-desktop-dark.svg")' : 'url("/images/pattern-background-desktop-light.svg")';
-    
-     
-
-  })
-  document.addEventListener("DOMContentLoaded", () => {
-    const body = document.body;
-    const darkModeToggle = document.getElementById("darkModeMoon") as HTMLImageElement;
-    const darkModeMoon = document.getElementById("darkModeMoon") as HTMLImageElement;
-    const darkModeSun = document.getElementById("darkModeSun") as HTMLImageElement;
-    const lightModeMoon = document.getElementById("darkModeMoon") as HTMLImageElement;
-    const lightModeSun = document.getElementById("lightModeSun") as HTMLImageElement;
-
-    // Initial setup based on dark mode status
-    updateMoonSunIcons();
-    
-    darkModeToggle.addEventListener("click", () => {
-      body.classList.toggle("dark-mode");
-
-      // Update moon and sun icons based on dark mode status
-      updateMoonSunIcons();
-    });
-    function updateMoonSunIcons(){
-      const body = document.body;
-const isDarkMode = body.classList.contains("dark-mode");
-  // const img=document.getElementById("modeToggleImage") as HTMLImageElement;
-
-
-      // Show/hide moon and sun based on dark mode status
-    darkModeMoon.style.display = isDarkMode ? "block" : "none";
-    darkModeSun.style.display = isDarkMode ? "none" : "block";
-    lightModeMoon.style.display = isDarkMode ? "none" : "block";
-    lightModeSun.style.display = isDarkMode ? "block" : "none";
-    
-    }
-
-  })
-
-  
-    });
-
-
-
-  
-    
-
-  
-
