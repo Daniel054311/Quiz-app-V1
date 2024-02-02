@@ -49,6 +49,7 @@ body {
   padding: 10px;
   display: flex;
   justify-content: space-between;
+  border: 2px solid red;
   font-size: 16px;
   color: #313E51;
   width: 50%;
@@ -57,6 +58,7 @@ body {
 
 .question {
   margin-bottom: 10px;
+  border: 2px solid blue;
   font-size: 20px;
   font-style: italic;
   color: #626C7F;
@@ -69,6 +71,7 @@ button {
 }
 
 .options-list {
+  border: 2px solid pink;
   display: flex;
   justify-content: space-between;
   text-align: right;
@@ -138,22 +141,22 @@ button {
 
 .crossIcon {
   text-align: center;
-  color: #EE5454;
+  color: red;
   border-radius: 50%;
   height: 20px;
   width: 20px;
-  border: 2px solid#EE5454;
+  border: 2px solid rgba(255, 0, 0, 0.81);
   float: right; /* Float to the right */
   margin-left: auto; /* Move to the right edge */
 }
 
 .tickIcon {
   text-align: center;
-  color: rgba#26D782;
+  color: rgba(38, 215, 130, 1);
   border-radius: 50%;
   height: 20px;
   width: 20px;
-  border: 2px solid #26D782;
+  border: 2px solid rgba(38, 215, 130, 1);
   float: right; /* Float to the right */
   margin-left: auto; /* Move to the right edge */
 }
