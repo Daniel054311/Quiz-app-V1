@@ -1,0 +1,169 @@
+
+body {
+    margin: 0 !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100% !important;
+    font-family: Rubik;
+    background-image:url("/images/pattern-background-desktop-light.svg");
+    background-color:#f4f6fA;
+    color:#313E51;
+    transition: background-color 0.3s, color 0.3s;
+    
+  }body.dark-mode{
+    background-color:#313E51 !important;
+    color: #ffffff!important;
+  }
+  
+  .parent-container {
+    box-sizing:border-box;
+    margin:0 !important;
+    height:100vh !important;
+    width: 100% !important;
+    display: flex;
+    flex-direction:row;
+    background-size:cover;
+    
+  }
+  .right-container .nav #darkModeToggle {
+    
+  }
+  body.dark-mode .right-container #darkModeToggle {
+    color: #f4f6fA;
+  }
+  
+  .left-container {
+    flex: 1;
+    padding: 20px;
+    text-align:left;
+    margin-top: 5%;/* Add a border between left and right containers */
+  }
+  
+  .right-container {
+    flex: 1;
+    padding: 20px;
+    text-align:right;
+    display:flex;
+    flex-direction:column;
+    margin-top: 5%;
+  }
+  /* body.light-mode{
+    background-color:#ffffff !important;
+    color:#313E51 !important; */
+  
+  
+  /* .navigation ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+  } */
+  
+  /* .navigation li {
+    margin-right: 20px;
+    margin-bottom: 10px;
+    text-align: center; */
+     
+    
+     /* Add space between buttons */
+  
+  
+  .navigation a {
+    /* display: block; */
+    padding: 20px;
+    /* text-decoration: none; */
+    color: #313E51;
+    background-color: #ffffff;
+    /* border: 2px solid #ffffff; */
+    border-radius: 24px;
+    margin-right: 10px;
+    gap: 32px;
+    font-size: 28px;
+    
+  }
+  
+.list-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px; /* Add spacing between items */
+    padding: 10px;
+    background-color:#ffffff;
+    border-radius: 25px; 
+    list-style: none;
+    gap:30px;
+    cursor: pointer;
+    color:#313E51;
+  }
+  /* body.dark-mode .list-item{
+    background-color:#313E51;
+    color:#f4f6fA; */
+  }
+  
+  /* .image {
+    width: 50px; 
+    height: 50px; 
+    border-radius:15px; 
+    margin-right: 10px;
+      */
+  /* }
+  
+  .content {
+    flex: 1; */ */
+  
+  .left-container .Welcome{
+    font-size: 64px;
+    color:#313E51;
+    font-style: normal;
+  }
+  .left-container .Quiz{
+    font-size: 64px;
+    font-style: bold;
+  }
+  .left-container .p{
+    color: #626C7F;
+    font-size: 20px;
+  }
+  
+  .image{
+    border-radius:7px;
+  }
+  /* body.dark-mode .navigation a{
+    background-color:#313E51;;
+    color:#ffffff;
+  } */
+  
+  /* .header.h1 {
+    text-align: center;
+    font-weight: 500;
+    font-size:25px;
+
+  }
+   */
+  /* .user-controls {
+    /* Add styles for user controls if needed */
+  /* }
+  
+  .navigation {
+    text-align: center;
+  }
+  
+  .navigation ul {
+    list-style: none;
+    padding: 0;
+    flex-direction: column;
+    align-items:center
+  }
+  
+  .navigation li {
+    margin-bottom: 10px;
+  }
+   */
+  
+  
+  
+  /* .navigation a:hover {
+    background-color: #ddd;
+  } */
+   
+

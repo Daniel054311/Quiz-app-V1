@@ -1,0 +1,61 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    width: 100%;
+  }
+  
+  .parent-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Ensure the container takes the full height of the viewport */
+  }
+  
+  .left-container {
+    padding: 20px;
+    border-right: 2px solid #ccc; /* Add a border between left and right containers */
+  }
+  
+  .right-container {
+    padding: 20px;
+    background-color:#ffffff;
+    font-weight: 500;
+    width:50%;
+    color:#000000;
+    padding:10px;
+    margin:10px 0;
+    text-align:left;
+    cursor:
+  }
+  
+  .header {
+    text-align: center;
+  }
+  
+  .user-controls {
+    /* Add styles for user controls if needed */
+  }
+  
+  .navigation {
+    text-align: center;
+  }
+  
+  .navigation ul {
+    list-style: none;
+    padding: 0;
+    flex-direction: column;
+    align-items:center
+  }
+  
+  .navigation li {
+    margin-bottom: 10px;
+  }
+  
+  
+  
+  
+  .navigation a:hover {
+    background-color: #ddd;
+  }
+  

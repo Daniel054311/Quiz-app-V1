@@ -1,0 +1,111 @@
+/* Your existing styles */
+
+/* Common styles for all screen sizes */
+body {
+  margin: 0;
+  font-family: 'Rubik', sans-serif;
+  background-image: url("/images/pattern-background-desktop-light.svg");
+  background-size: cover;
+  background-color: #f4f6fA;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  padding: 0px 2% 30px;
+  margin: 20px 20;
+}
+
+#question-list {
+  display: flex;
+  border: 2px solid yellow;
+  justify-content: space-between;
+  margin: 20px 20;
+  flex-direction: row-reverse;
+  padding: 0px 2%;
+}
+
+.list-item {
+  margin-bottom: 20px;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  border: 2px solid red;
+  font-size: 2.25rem;
+  color: #313E51;
+  width: 50%;
+}
+
+.question {
+  margin-bottom: 10px;
+  border: 2px solid blue;
+  font-size: 20px;
+  font-style: italic;
+  color: #626C7F;
+}
+
+button {
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+.options-list {
+  border: 2px solid pink;
+  display: flex;
+  justify-content: space-between;
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Additional styling for options */
+.options-list li {
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  padding: 30px;
+  background-color: #ffffff;
+  border-radius: 24px;
+  list-style: none;
+  gap: 30px;
+  font-size: 28px;
+  font-style: normal;
+}
+
+.submit,
+.nextButton {
+  background-color: #A729F5;
+  padding: 10px 20px;
+  font-size: 28px;
+  color: #ffffff;
+  gap: 10px;
+  align-items: center;
+  border-radius: 24px;
+  border-color: none;
+  border: 5px;
+}
+
+/* Media queries for different screen sizes */
+
+/* Adjust styles for screens with a maximum width of 768px */
+@media only screen and (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  #question-list {
+    flex-direction: column-reverse;
+    flex-direction: row-reverse;
+  }
+
+  .list-item {
+    width: 100%;
+  }
+}
+
+/* Add more media queries as needed for other screen sizes */
+
+/* Your other styles */

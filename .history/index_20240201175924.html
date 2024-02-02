@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz-App</title>
+    <link rel="stylesheet" type="text/css" href="/asset/style/index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+
+<body class="">
+    <div class="parent-container">
+        <div class="left-container">
+            <h1><span class="Welcome">Welcome to the </span><br><span class="Quiz">Frontend Quiz</h1></span>
+
+            </h1>
+
+            <p>Pick a subject to get started</p>
+
+        </div>
+        <div class="right-container">
+            <div>
+             <img id="darkModeMoon"  src="/images/icon-moon-dark.svg"> 
+             <img id="darkModeSun" src="/images/icon-sun-dark.svg">
+             <img id="lightModeMoon" src="/images/icon-moon-light.svg"> 
+             <img id="lightModeSun" src="/images/icon-sun-light.svg"> 
+            <i id="darkModeToggle" class="fa fa-toggle-on" style="font-size:36px"></i>
+        </div>
+
+
+            <div class="navigation" id="navigation"></div>
+        </div>
+    </div>
+
+    
+    <script type="module" src="./asset/script/index.js"></script>
+
+    <!-- Your existing HTML content -->
+    <!-- Your existing HTML content -->
+
+<script type="module">
+    // Dark mode toggle
+    document.addEventListener("DOMContentLoaded", () => {
+      const body = document.body;
+      const darkModeToggle = document.getElementById("darkModeToggle") as HTMLElement;
+      const img = document.getElementById("modeToggleImage") as HTMLImageElement;
+  
+      darkModeToggle.addEventListener("click", () => {
+        body.classList.toggle("dark-mode");
+  
+        // Update moon and sun icons based on dark mode status
+        updateMoonSunIcons();
+  
+        // Update background color and text color based on dark mode status
+        const isDarkMode = body.classList.contains("dark-mode");
+        body.style.backgroundColor = isDarkMode ? "#313E51" : "#f4f6fA";
+        body.style.color = isDarkMode ? "#ffffff" : "#313E51";
+  
+        // Update image source based on dark mode status
+        img.src = isDarkMode
+          ? "/images/pattern-background-desktop-dark.svg"
+          : "/images/pattern-background-desktop-dark.svg";
+      });
+  
+      // Initial setup based on dark mode status
+      updateMoonSunIcons();
+    });
+  </script>
+  </body>
+  
+  </html>
+  
+</body>
+  </body>
+  
+  </html>
+  

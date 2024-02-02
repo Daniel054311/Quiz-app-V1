@@ -1,0 +1,95 @@
+body {
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    font-family: Rubik;
+  }
+  .parent-container {
+    display: flex;
+    flex-direction:row;
+    width: 100%; 
+    height:100%;
+    background-image:url("../images/pattern-background-desktop-light.svg");
+    background-size: cover;
+    
+    font-style: normal;
+    font-weight: 500;
+  }
+  .left-container {
+    flex: 1;
+    padding: 20px;
+    text-align:left;
+    margin-top: 4%;
+    
+  }
+  .right-container {
+    flex: 1;
+    padding: 20px;
+    text-align:right;
+    display:flex;
+    flex-direction:column;
+    margin-top: 4%;
+    font-size: 28px;
+
+  }
+  .navigation ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .navigation li {
+    margin-right: 20px;
+    margin-bottom: 10px;
+    text-align: center;
+  }
+  .navigation a {
+    display: block;
+    padding: 10px;
+    text-decoration: none;
+    color: #000000;
+    background-color: #ffffff;
+    border: 1px solid #ffffff;
+    border-radius: 5px;
+    margin-right: 10px;
+    
+  }
+  
+.option-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px; /* Add spacing between items */
+    padding: 10px;
+    background-color:#ffffff;
+    border-radius: 25px; 
+  }
+  
+  .options {
+    width: 50px; 
+    height: 50px; 
+    border-radius:20px; 
+    margin-right: 10px;
+    
+     
+  }
+
+  .content {
+    flex: 1;
+    color: #313E51;
+    padding: 18px 20px
+  }
+  
+.option-item .content {
+    border-radius: 20px; /* Set the desired border size and color */
+    padding: 20px; /* Optional: Add padding for better visual appearance */
+}
+.left-container .h1{
+  font-size: 36px;
+  color: #313E51;
+}
+.left-container .p{
+  color: #626c7F;
+}

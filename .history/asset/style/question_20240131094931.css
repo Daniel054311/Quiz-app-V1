@@ -1,0 +1,81 @@
+/* Your existing styles */
+body {
+  margin: 0;
+  height: 100vh;
+  font-family: Rubik;
+}
+
+ .parent-container {
+  /* display: flex;
+  flex-direction:row;
+  width: 100%; 
+  height:100%;
+  background-image:url("../images/pattern-background-desktop-light.svg");
+  background-size: cover;
+  background-color:#f4f6fA;
+  border:2px solid red;
+  */
+ display:flex;
+ justify-content: space-between;
+ }
+
+#question-list {
+  display: flex;
+  flex-direction: column;
+  border:2px solid yellow;
+}
+
+.list-item {
+  /* width: 60%;
+  margin-bottom: 20px;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between; */
+}
+
+/* .question {
+  flex: 1;
+    padding: 20px;
+    text-align:left;
+    margin-top: 10%; */
+
+
+.option {
+  flex: 1;
+    padding: 20px;
+    text-align:right;
+    display:flex;
+    flex-direction:column;
+    margin-top: 10%;
+    border:2px solid green;
+}
+
+.question {
+  margin-bottom: 10px;
+  border: 2px solid red;
+}
+
+button {
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+.options-list {
+  list-style-type: none; /* Remove the default bullet points */
+  padding: 0; /* Remove default padding */
+}
+
+/* Additional styling for options */
+.options-list li {
+  margin-bottom: 8px;
+  display: flex;
+    align-items: center;
+    margin-bottom: 10px; /* Add spacing between items */
+    padding: 10px;
+    background-color:#ffffff;
+    border-radius: 25px; 
+    list-style: none;
+    gap:30px;
+}
+
+/* Your other styles */
